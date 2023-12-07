@@ -1,5 +1,109 @@
-template-repository (1.0-1) unstable; urgency=medium
+golang-github-streadway-amqp (0.0~git20200716.e6b33f4-3) unstable; urgency=medium
 
-  * Initial release
+  * Regenerate certs with SHA256 to fix test with Go 1.18+
+    This fixes "x509: cannot verify signature: insecure algorithm SHA1-RSA"
+    error with Go 1.18 and up in TestTLSHandshake which led to FTBFS.
+    See https://github.com/streadway/amqp/pull/525
+    Thanks to Lucas Nussbaum for the bug report! (Closes: #1008423)
+  * Reorder fields in debian/control and debian/copyright
+    as would be generated in the next dh-make-golang release after 0.6.0-1
+  * Bump debhelper dependency to "Build-Depends: debhelper-compat (= 13)"
+  * Use dh-sequence-golang instead of dh-golang and --with=golang
+  * Build-depend on debhelper (>= 13.4) and remove --buildsystem=golang
+  * Bump Standards-Version to 4.6.0 (no change)
+  * Mark library package with "Multi-Arch: foreign"
+  * Add myself to the list of Uploaders
+  * debian/gbp.conf: Set debian-branch to debian/sid for DEP-14 conformance
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Anthony Fok <foka@debian.org>  Wed, 06 Apr 2022 03:20:57 -0600
+
+golang-github-streadway-amqp (0.0~git20200716.e6b33f4-2) unstable; urgency=medium
+
+  * Team upload.
+  * debian/control:
+    - Remove "Depends: golang-go" from binary package
+      golang-github-streadway-amqp-dev
+    - Apply "cme fix dpkg" fixes:
+      + Organize debian/control fields
+      + Bump Standards-Version to 4.5.1 (no change)
+    - Change Section from devel to golang
+    - Add "Rules-Requires-Root: no"
+
+ -- Anthony Fok <foka@debian.org>  Tue, 26 Jan 2021 17:41:50 -0700
+
+golang-github-streadway-amqp (0.0~git20200716.e6b33f4-1) unstable; urgency=medium
+
+  * New upstream version 0.0~git20200716.e6b33f4
+  * Revert "Limit readLongstr to max(uint32) because slices on 386 ca..."
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 12 Dec 2020 23:15:13 +0100
+
+golang-github-streadway-amqp (0.0~git20200108.1c71cc9-1) unstable; urgency=medium
+
+  [ Michael Stapelberg ]
+  * update debian/gitlab-ci.yml (using salsa.debian.org/go-team/ci/cmd/ci)
+
+  [ Andreas Henriksson ]
+  * Update Maintainer field to use new team address
+  * Add myself to uploaders (Closes: #940426)
+
+  [ Debian Janitor ]
+  * Use secure copyright file specification URI.
+  * Bump debhelper from old 9 to 12.
+  * Set debhelper-compat version in Build-Depends.
+  * Remove unnecessary Team Upload line in changelog.
+  * Set upstream metadata fields:
+    Bug-Database, Bug-Submit, Repository, Repository-Browse.
+
+  [ Andreas Henriksson ]
+  * Add debian/watch tracking git HEAD
+  * Change build-dep golang-go to golang-any
+  * New upstream version 0.0~git20200108.1c71cc9
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 18 Feb 2020 15:21:54 +0100
+
+golang-github-streadway-amqp (0.0~git20150820.0.f4879ba-6) unstable; urgency=medium
+
+  * Vcs-* urls: pkg-go-team -> go-team.
+
+ -- Alexandre Viau <aviau@debian.org>  Mon, 05 Feb 2018 23:17:36 -0500
+
+golang-github-streadway-amqp (0.0~git20150820.0.f4879ba-5) unstable; urgency=medium
+
+  * point Vcs-* urls to salsa.d.o subproject
+
+ -- Alexandre Viau <aviau@debian.org>  Thu, 25 Jan 2018 15:58:47 -0500
+
+golang-github-streadway-amqp (0.0~git20150820.0.f4879ba-4) unstable; urgency=medium
+
+  * Fix dead VCS-* URLs.
+
+ -- Alexandre Viau <aviau@debian.org>  Sun, 07 Jan 2018 13:49:17 -0500
+
+golang-github-streadway-amqp (0.0~git20150820.0.f4879ba-3) unstable; urgency=medium
+
+  * Priority extra -> optional.
+  * Move to salsa.debian.org.
+  * Use XS-Go-Import-Path.
+  * Change my email to @debian.org.
+  * Testsuite: autopkgtest-pkg-go.
+
+ -- Alexandre Viau <aviau@debian.org>  Fri, 29 Dec 2017 23:52:13 -0500
+
+golang-github-streadway-amqp (0.0~git20150820.0.f4879ba-2) unstable; urgency=medium
+
+  [ Paul Tagliamonte ]
+  * Team upload.
+  * Use a secure transport for the Vcs-Git and Vcs-Browser URL
+  * Remove Built-Using from arch:all -dev package
+
+  [ Philipp Hug ]
+  * Fix TestGoFuzzCrashers (Closes: #860684)
+
+ -- Philipp Hug <hug@debian.org>  Sat, 06 May 2017 17:59:44 +0200
+
+golang-github-streadway-amqp (0.0~git20150820.0.f4879ba-1) unstable; urgency=medium
+
+  * Initial release (Closes: #798045)
+
+ -- Alexandre Viau <alexandre@alexandreviau.net>  Fri, 04 Sep 2015 15:20:19 -0400
